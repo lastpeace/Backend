@@ -123,10 +123,9 @@ class AuthController extends Controller
     ], 200);
 }
 
-
+//menghapus token dengan logout
     public function logout(Request $request)
     {
-        // Menghapus token autentikasi yang digunakan
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
