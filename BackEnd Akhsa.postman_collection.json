@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "3d498f72-322b-4a77-8c04-fea79b5d6468",
+		"name": "BackEnd Akhsa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37618320"
+	},
+	"item": [
+		{
+			"name": "Tugas 1",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "081332111198",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "info.aksamedia@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pastibisa",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "pastibisa",
+									"type": "text"
+								}
+							]
+						},
+						"url": "backend.test/api/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "backend.test/api/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tugas 2",
+			"item": [
+				{
+					"name": "Pagination Divisi",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tugas 3",
+			"item": [
+				{
+					"name": "Employee Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "EzLJ4vC5gvtKSBshEBmr8jA3vDrhrfKw2WiS5hps6e43a68f"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "backend.test/api/employees?name=Raihan&divisions_i=2",
+							"host": [
+								"backend",
+								"test"
+							],
+							"path": [
+								"api",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Raihan"
+								},
+								{
+									"key": "divisions_i",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tugas 4",
+			"item": [
+				{
+					"name": "Employee Store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"value": "http://aksamedia.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Raihan Caesario Ammar Saputra",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "085795526558",
+									"type": "text"
+								},
+								{
+									"key": "division_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "Position",
+									"value": "QA",
+									"type": "text"
+								}
+							]
+						},
+						"url": "backend.test/api/employees"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tugas 5",
+			"item": [
+				{
+					"name": "Update Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "EzLJ4vC5gvtKSBshEBmr8jA3vDrhrfKw2WiS5hps6e43a68f"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Admin Aksa",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0863418733",
+									"type": "text"
+								},
+								{
+									"key": "divisions_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "position",
+									"value": "Mobile Apps",
+									"type": "text"
+								}
+							]
+						},
+						"url": "backend.test/api/employees/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tugas 6",
+			"item": [
+				{
+					"name": "Delete Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "EzLJ4vC5gvtKSBshEBmr8jA3vDrhrfKw2WiS5hps6e43a68f"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "backend.test/api/employees/?id=1",
+							"host": [
+								"backend",
+								"test"
+							],
+							"path": [
+								"api",
+								"employees",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tugas 7",
+			"item": [
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

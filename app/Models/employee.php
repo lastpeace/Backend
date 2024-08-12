@@ -9,13 +9,13 @@ class Employee extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'name', 'phone', 'image', 'position', 'division_id'
+        'id', 'name', 'phone', 'image', 'position', 'divisions_id'
     ];
 
     protected $primaryKey = 'id';
 
     public function division()
     {
-        return $this->belongsTo(Division::class);
+        return $this->belongsTo(Division::class, 'division_id');
     }
 }

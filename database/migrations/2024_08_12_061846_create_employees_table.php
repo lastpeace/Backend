@@ -10,12 +10,12 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id('id');
             $table->string('name');
             $table->string('phone');
             $table->string('image')->nullable();
             $table->string('position')->nullable();
-            $table->foreignUuid('divisions_id')->constrained('divisions')->onDelete('cascade');
+            $table->foreignid('divisions_id')->constrained('divisions')->onDelete('cascade');
             $table->timestamps();
         });
     }

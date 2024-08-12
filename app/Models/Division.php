@@ -9,7 +9,7 @@ class Division extends Model
 {
 
     use HasFactory;
-
+    protected $fillable = ['id', 'name'];
     protected $hidden = [
         'created_at',
         'updated_at',

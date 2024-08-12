@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
@@ -81,5 +82,57 @@ class AuthController extends Controller
                 'data' => null
             ]);
         }
+    }
+
+    public function update(Request $request, $id)
+{
+    $employee = Employee::find($id);
+
+    if (!$employee) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Employee not found',
+            'data' => null
+        ], 404);
+    }
+
+    $validator = Validator::make($request->all(), [
+        'image' => 'nullable|url',
+        'name' => 'required|string|max:255',
+        'phone' => 'required|string|max:20',
+        'divisions_id' => 'required|exists:divisions,id',
+        'position' => 'required|string|max:255',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Validation errors',
+            'data' => $validator->errors()
+        ], 400);
+    }
+
+    $employee->update($request->only(['image', 'name', 'phone', 'divisions_id', 'position']));
+
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Employee updated successfully',
+        'data' => [
+            'employee' => $employee
+        ]
+    ], 200);
+}
+
+
+    public function logout(Request $request)
+    {
+        // Menghapus token autentikasi yang digunakan
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Logout berhasil',
+            'data' => null
+        ], 200);
     }
 }
